@@ -6,6 +6,7 @@
   "main": "agent.ts",
   "scripts": {
     "build": "tsc",
+    "start": "adk web dist/agent.js --host 0.0.0.0 --port ${PORT:-8080} --session_service_uri memory:// --compile=false --bundle=false --file_type esm",
     "typecheck": "tsc --noEmit",
     "smoke:rag": "npm run build && node dist/scripts/rag-smoke.js",
     "smoke:llm-adapter": "npm run build && node dist/scripts/llm-adapter-smoke.js",
@@ -22,13 +23,13 @@
   },
   "dependencies": {
     "@google/adk": "latest",
+    "@google/adk-devtools": "latest",
     "@henkey/postgres-mcp-server": "^1.0.7",
     "dotenv": "latest",
     "pg": "^8.22.0",
     "zod": "latest"
   },
   "devDependencies": {
-    "@google/adk-devtools": "latest",
     "@types/node": "latest",
     "@types/pg": "^8.20.0",
     "typescript": "latest"

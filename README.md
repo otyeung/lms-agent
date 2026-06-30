@@ -49,6 +49,30 @@ While this repository serves as a local proof-of-concept, the architecture is de
 - **Retrieval:** The local vectorless RAG can be swapped for Vertex AI Vector Search to scale from 100 playbook rules to millions of enterprise documents.
 - **Models:** The OpenAI-compatible adapter ensures vendor flexibility, allowing seamless migration to Vertex AI Gemini 1.5 Pro/Flash utilizing Google's enterprise data privacy guarantees.
 
+### Google Cloud Run deployment
+
+The repository includes a `Dockerfile` for deploying the ADK web server to Cloud Run. The container listens on Cloud Run's `PORT` environment variable and runs the compiled ADK agent from `dist/agent.js`.
+
+Enable the required APIs with full service names:
+
+```bash
+gcloud services enable \
+  run.googleapis.com \
+  cloudbuild.googleapis.com \
+  artifactregistry.googleapis.com
+```
+
+Deploy from source:
+
+```bash
+gcloud run deploy lms-agent \
+  --source . \
+  --region asia-southeast1 \
+  --allow-unauthenticated
+```
+
+Cloud Run does not read local `.env` files. Configure runtime environment variables through Cloud Run, Secret Manager, or the Google Cloud Console. At minimum, the app needs `LLM_API_URL` and `LLM_API_TOKEN` for live model calls; database-backed questions also need `DATABASE_URL`.
+
 ## Call flows
 
 The ADK Web UI displays each user message, model decision, tool call, function response, and final answer as events. These diagrams show the four main paths through the agent.
