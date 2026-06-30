@@ -1,0 +1,35 @@
+{
+  "name": "linkedin-ads-campaign-agent",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "agent.ts",
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "smoke:rag": "npm run build && node dist/scripts/rag-smoke.js",
+    "smoke:llm-adapter": "npm run build && node dist/scripts/llm-adapter-smoke.js",
+    "smoke:local-data": "npm run build && node dist/scripts/local-data-smoke.js",
+    "smoke:text-sql": "npm run build && node dist/scripts/text-sql-smoke.js",
+    "smoke:text-sql:translate": "npm run build && node dist/scripts/text-sql-translation-smoke.js",
+    "db:migrate": "npm run build && node dist/scripts/db-migrate.js",
+    "db:rollback": "npm run build && node dist/scripts/db-rollback.js",
+    "db:seed": "npm run build && node dist/scripts/db-seed.js",
+    "db:verify": "npm run build && node dist/scripts/db-verify.js",
+    "db:setup": "npm run db:migrate && npm run db:seed && npm run db:verify",
+    "adk:run": "adk run agent.ts",
+    "adk:web": "adk web agent.ts --session_service_uri memory://"
+  },
+  "dependencies": {
+    "@google/adk": "latest",
+    "@henkey/postgres-mcp-server": "^1.0.7",
+    "dotenv": "latest",
+    "pg": "^8.22.0",
+    "zod": "latest"
+  },
+  "devDependencies": {
+    "@google/adk-devtools": "latest",
+    "@types/node": "latest",
+    "@types/pg": "^8.20.0",
+    "typescript": "latest"
+  }
+}
