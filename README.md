@@ -226,7 +226,7 @@ cp .env.example .env
 | `DATABASE_URL` | Required for database scripts and PostgreSQL-backed questions | `db:*`, `smoke:text-sql`, `execute_validated_sql` | PostgreSQL connection string used by migration, seed, verify, smoke, and MCP-backed read-only SQL execution. Leave unset only when using non-database flows such as local telemetry or RAG. |
 | `LLM_API_URL` | Yes | `adk:run`, `adk:web`, `smoke:llm-adapter` | Base URL for the OpenAI-compatible Chat Completions endpoint. |
 | `LLM_API_TOKEN` | Yes | `adk:run`, `adk:web`, `smoke:llm-adapter` | Bearer token for the OpenAI-compatible LLM provider. |
-| `LLM_MODEL` | Yes, defaults to `gpt-5-mini` in `.env.example` | `adk:run`, `adk:web`, `smoke:llm-adapter` | Primary model name sent to the configured OpenAI-compatible endpoint. |
+| `LLM_MODEL` | Yes, defaults to `gemini-3.5-flash` in `.env.example` | `adk:run`, `adk:web`, `smoke:llm-adapter` | Primary model name sent to the configured OpenAI-compatible endpoint. |
 | `LLM_BATCH_MODEL` | No | Reserved in `.env.example` | Batch-model placeholder included for provider compatibility; the current runtime does not read it. |
 | `LLM_FALLBACK_MODEL` | No | `adk:run`, `adk:web`, `smoke:llm-adapter` | Optional fallback model used by the local LLM adapter when provider responses indicate the primary model should fall back. |
 

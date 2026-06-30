@@ -67,7 +67,7 @@ export class OpenAICompatibleLlm extends BaseLlm {
     this.fetchFn = fetchFn
   }
 
-  static readonly supportedModels = [/^gpt-.+/, /^claude-.+/]
+  static readonly supportedModels = [/^gpt-.+/, /^claude-.+/, /^gemini-.+/]
 
   async *generateContentAsync(
     llmRequest: LlmRequest,
