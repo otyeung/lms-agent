@@ -8,6 +8,10 @@ By bridging deep-technical constraints with C-suite business goals, this agent a
 
 This Google ADK TypeScript proof-of-concept demonstrates an Enterprise B2B Marketing AI Agent for LinkedIn Ads campaign intelligence. It helps campaign managers reason across volatile ad telemetry, a local LinkedIn Ads playbook, and CRM-backed PostgreSQL lead data without exposing arbitrary database access to the model.
 
+## Hosted Demo
+
+The live demo is hosted on Google Cloud Run: <https://lms-agent-927182129066.us-central1.run.app>
+
 ## Capabilities
 
 1. **Volatile Tool Calling** — `get_live_campaign_spend` and `get_audience_timezone` read local mock telemetry that represents LinkedIn Campaign Manager style data.
