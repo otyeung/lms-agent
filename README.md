@@ -224,6 +224,10 @@ npm run adk:web
 
 `npm run db:setup` and `npm run smoke:text-sql` require `DATABASE_URL` to be configured. See [Environment configuration](#environment-configuration) for all supported `.env.example` variables.
 
+## License
+
+This project is licensed under the Apache License 2.0. See [LICENSE](LICENSE) for details.
+
 ## Enterprise Governance & Data Sovereignty
 
 A critical blocker for enterprise AI adoption is granting LLMs unrestricted database access. This architecture resolves that blocker by implementing strict data sovereignty guardrails that prevent data exfiltration and reduce LLM hallucinations:
