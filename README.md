@@ -67,9 +67,19 @@ Deploy from source:
 ```bash
 gcloud run deploy lms-agent \
   --source . \
-  --region asia-southeast1 \
-  --allow-unauthenticated
+  --region us-central1 \
+  --allow-unauthenticated \
+  --min-instances=0 \
+  --max-instances=1 \
+  --memory=512Mi \
+  --cpu=1 \
+  --concurrency=80 \
+  --timeout=300 \
+  --no-cpu-boost \
+  --set-env-vars NODE_ENV=production
 ```
+
+This is the lowest-cost practical configuration for this PoC: Cloud Run scales to zero when idle, caps scaling at one instance, and uses a lower-cost/free-tier-friendly region.
 
 Cloud Run does not read local `.env` files. Configure runtime environment variables through Cloud Run, Secret Manager, or the Google Cloud Console. At minimum, the app needs `LLM_API_URL` and `LLM_API_TOKEN` for live model calls; database-backed questions also need `DATABASE_URL`.
 
